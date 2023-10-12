@@ -113,6 +113,7 @@ namespace SistemaVenta.BLL.Implementacion
                 Ususario_Editar.Correo = entidad.Correo;
                 Ususario_Editar.Telefono = entidad.Telefono;
                 Ususario_Editar.IdRol = entidad.IdRol;
+                Ususario_Editar.EsActivo = entidad.EsActivo;
 
                 if (Ususario_Editar.NombreFoto == "")
                     Ususario_Editar.NombreFoto = NombreFoto;

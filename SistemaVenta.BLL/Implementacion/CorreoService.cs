@@ -25,14 +25,14 @@ namespace SistemaVenta.BLL.Implementacion
         {
             try
             {
-                IQueryable<Configuracion> queri = await _repository.Consultar(c => c.Recurso.Equals("Servicio_Correo"));
+                IQueryable<Configuracion> query = await _repository.Consultar(c => c.Recurso.Equals("Servicio_Correo"));
 
-                Dictionary<string, string> Config = queri.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
+                Dictionary<string, string> Config2 = query.ToDictionary(keySelector: c => c.Propiedad, elementSelector: c => c.Valor);
 
-                var credenciales = new NetworkCredential(Config["correo"], Config["clave"]);
+                var credenciales = new NetworkCredential(Config2["correo"], Config2["clave"]);
                 var correo = new MailMessage()
                 {
-                    From = new MailAddress(Config["correo"], Config["MiTienda.com"]),
+                    From = new MailAddress(Config2["correo"], Config2["alias"]),
                     Subject = Asunto,
                     Body = Mensaje,
                     IsBodyHtml = true    
@@ -41,8 +41,8 @@ namespace SistemaVenta.BLL.Implementacion
 
                 var clienteservidor = new SmtpClient()
                 {
-                    Host = Config["host"],
-                    Port = int.Parse(Config["puerto"]),
+                    Host = Config2["host"],
+                    Port = int.Parse(Config2["puerto"]),
                     Credentials= credenciales,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,

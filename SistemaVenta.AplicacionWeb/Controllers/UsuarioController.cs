@@ -64,7 +64,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
                     FotoStraem = foto.OpenReadStream(); 
 
                 }
-                string UrlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?=[correo]&clave[clave]";
+                string UrlPlantillaCorreo = $"{this.Request.Scheme}://{this.Request.Host}/Plantilla/EnviarClave?Correo=[correo]&Clave=[clave]";
 
                 Usuario usuario_creado= await _usuarioService.Crear(_mapper.Map<Usuario>(vmUsusario), FotoStraem, nombreFoto, UrlPlantillaCorreo);
 
