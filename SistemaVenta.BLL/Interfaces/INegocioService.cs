@@ -13,5 +13,7 @@ namespace SistemaVenta.BLL.Interfaces
         Task<Negocio> Obtener();
         Task<Negocio> GuardarCambios(Negocio entidad, Stream Logo=null, string nombreLogo="");
 
+        //agrego comentario en la rama Juan
+
     }
 }
